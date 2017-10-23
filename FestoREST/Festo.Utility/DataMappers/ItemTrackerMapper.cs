@@ -1,4 +1,5 @@
-﻿using Festo.DataTables.Tables;
+﻿using Festo.Common.DataMapperInterfaces;
+using Festo.DataTables.Tables;
 using Festo.DTOs;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Festo.Utility.DataMappers
 {
-    public class ItemTrackerMapper
+    public class ItemTrackerMapper : IItemTrackerMapper
     {
         public ItemTrackerDTO CreateItemTrackerDTOFromItemTracker(ITEMTRACKER itemTracker)
         {
@@ -38,7 +39,7 @@ namespace Festo.Utility.DataMappers
         public object CreateShapeDataObject(ITEMTRACKER itemTracker, List<string> listOfFields)
         {
             //pass through from entity to DTO
-            return CreateShapeDataObject(itemTracker, listOfFields);
+            return CreateShapeDataObject(CreateItemTrackerDTOFromItemTracker(itemTracker), listOfFields);
         }
 
         public object CreateShapeDataObject(ItemTrackerDTO itemTrackerDTO, List<string> listOfFields)

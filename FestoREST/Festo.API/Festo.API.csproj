@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Marvin.JsonPatch, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Marvin.JsonPatch.1.1.0\lib\portable40-net40+win8\Marvin.JsonPatch.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -161,6 +164,10 @@
       <Project>{1e9951ca-745c-4548-93f3-8f3bd2822b23}</Project>
       <Name>Festo.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Festo.Constants\Festo.Constants.csproj">
+      <Project>{a31872bd-5b1f-42e9-a384-4235214045da}</Project>
+      <Name>Festo.Constants</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Festo.DataAccess\Festo.DataAccess.csproj">
       <Project>{02ceff6d-1602-4edf-8acf-014d64e9dfe5}</Project>
       <Name>Festo.DataAccess</Name>
@@ -170,7 +177,7 @@
       <Name>Festo.DataTables</Name>
     </ProjectReference>
     <ProjectReference Include="..\Festo.DTOs\Festo.DTOs.csproj">
-      <Project>{437F2F7D-1F0B-4001-BCA6-A9C5770C4A44}</Project>
+      <Project>{437f2f7d-1f0b-4001-bca6-a9c5770c4a44}</Project>
       <Name>Festo.DTOs</Name>
     </ProjectReference>
     <ProjectReference Include="..\Festo.Utility\Festo.Utility.csproj">

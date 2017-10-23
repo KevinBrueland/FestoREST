@@ -18,5 +18,7 @@ namespace Festo.Common.RepositoryInterfaces
         IEnumerable<T> GetAll();
 
         IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
+
+        object Insert(T entity);
     }
 }

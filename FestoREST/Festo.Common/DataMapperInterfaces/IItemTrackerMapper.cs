@@ -13,6 +13,8 @@ namespace Festo.Common.DataMapperInterfaces
         ItemTrackerDTO CreateItemTrackerDTOFromItemTracker(ITEMTRACKER itemTracker);
         ITEMTRACKER CreateItemTrackerFromItemTrackerDTO(ItemTrackerDTO itemTrackerDTO);
 
+
+
         object CreateShapeDataObject(ITEMTRACKER itemTracker, List<string> listOfFields);
 
         object CreateShapeDataObject(ItemTrackerDTO itemTrackerDTO, List<string> listOfFields);

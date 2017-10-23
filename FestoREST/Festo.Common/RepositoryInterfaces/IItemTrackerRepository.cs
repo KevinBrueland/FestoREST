@@ -10,5 +10,9 @@ namespace Festo.Common.RepositoryInterfaces
     public interface IItemTrackerRepository : IRepository<ITEMTRACKER>
     {
         ITEMTRACKER GetItemTrackerByItemId(int itemId);
+
+        ITEMTRACKER GetSingleItemTrackerByOrderAndItemId(int orderId, int itemId);
+
+        object UpdateItemTracker(ITEMTRACKER itemTracker);
     }
 }

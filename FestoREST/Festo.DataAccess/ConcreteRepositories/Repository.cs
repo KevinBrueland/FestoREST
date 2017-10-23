@@ -1,4 +1,6 @@
-﻿using Festo.Common.RepositoryInterfaces;
+﻿using Festo.Common.Enums;
+using Festo.Common.RepositoryInterfaces;
+using Festo.Utility.RepositoryHelpers;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -40,6 +42,27 @@ namespace Festo.DataAccess.ConcreteRepositories
         public void Remove(T type)
         {
             Context.Set<T>().Remove(type);
+        }
+
+        public object Insert(T entity)
+        {
+            try
+            {
+                Context.Set<T>().Add(entity);
+                var result = Context.SaveChanges();
+                if (result > 0)
+                {
+                    return new RepositoryActionResult<T>(entity, RepositoryActionStatus.Created);
+                }
+                else
+                {
+                    return new RepositoryActionResult<T>(entity, RepositoryActionStatus.NothingModified, null);
+                }
+            }
+            catch (Exception ex)
+            {
+                return new RepositoryActionResult<T>(null, RepositoryActionStatus.Error, ex);
+            }
         }
     }
 }

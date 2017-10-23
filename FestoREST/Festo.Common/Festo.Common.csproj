@@ -72,6 +72,7 @@
     <Compile Include="DataMapperInterfaces\IOrderTrackerMapper.cs" />
     <Compile Include="Enums\ItemStatus.cs" />
     <Compile Include="Enums\OrderStatus.cs" />
+    <Compile Include="Enums\RepositoryActionStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryInterfaces\IItemRepository.cs" />
     <Compile Include="RepositoryInterfaces\IItemTrackerRepository.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="RepositoryInterfaces\IOrderTrackerRepository.cs" />
     <Compile Include="RepositoryInterfaces\IRepository.cs" />
     <Compile Include="RepositoryInterfaces\IUnitOfWork.cs" />
+    <Compile Include="UtilityInterfaces\IRepositoryActionResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -89,7 +91,7 @@
       <Name>Festo.DataTables</Name>
     </ProjectReference>
     <ProjectReference Include="..\Festo.DTOs\Festo.DTOs.csproj">
-      <Project>{437F2F7D-1F0B-4001-BCA6-A9C5770C4A44}</Project>
+      <Project>{437f2f7d-1f0b-4001-bca6-a9c5770c4a44}</Project>
       <Name>Festo.DTOs</Name>
     </ProjectReference>
   </ItemGroup>

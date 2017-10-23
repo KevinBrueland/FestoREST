@@ -9,6 +9,8 @@ namespace Festo.Common.RepositoryInterfaces
 {
     public interface IOrderTrackerRepository : IRepository<ORDERTRACKER>
     {
-        ORDERTRACKER GetOrderTrackerByOrderId(int orderId);
+        ORDERTRACKER GetSingleOrderTrackerByOrderId(int orderId);
+
+        object UpdateOrderTracker(ORDERTRACKER orderTracker);
     }
 }

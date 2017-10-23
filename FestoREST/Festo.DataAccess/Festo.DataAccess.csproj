@@ -47,7 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConcreteRepositories\ItemTrackerRepository.cs" />
     <Compile Include="ConcreteRepositories\OrderRepository.cs" />
+    <Compile Include="ConcreteRepositories\OrderTrackerRepository.cs" />
     <Compile Include="ConcreteRepositories\Repository.cs" />
     <Compile Include="ConcreteRepositories\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,6 +62,10 @@
     <ProjectReference Include="..\Festo.DataTables\Festo.DataTables.csproj">
       <Project>{8bf6c622-82de-4cd4-b060-649836d94d11}</Project>
       <Name>Festo.DataTables</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Festo.Utility\Festo.Utility.csproj">
+      <Project>{2432FA0A-D8D2-4554-800F-96C6790776EF}</Project>
+      <Name>Festo.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

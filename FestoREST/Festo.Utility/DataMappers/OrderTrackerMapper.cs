@@ -1,4 +1,5 @@
-﻿using Festo.DataTables.Tables;
+﻿using Festo.Common.DataMapperInterfaces;
+using Festo.DataTables.Tables;
 using Festo.DTOs;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Festo.Utility.DataMappers
 {
-    public class OrderTrackerMapper
+    public class OrderTrackerMapper : IOrderTrackerMapper
     {
         public OrderTrackerDTO CreateOrderTrackerDTOFromOrderTracker(ORDERTRACKER orderTracker)
         {

@@ -48,6 +48,7 @@
     <Compile Include="DataMappers\OrderMapper.cs" />
     <Compile Include="DataMappers\OrderTrackerMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryHelpers\RepositoryActionResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Festo.Common\Festo.Common.csproj">
