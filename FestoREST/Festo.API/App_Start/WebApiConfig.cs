@@ -25,8 +25,8 @@ namespace Festo.API
 
             config.Routes.MapHttpRoute(
                 name: "DefaultRouting",
-                routeTemplate: "api/{controller}/{id}/{id1}",
-                defaults: new { id = RouteParameter.Optional, id1 = RouteParameter.Optional });
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional });
 
             config.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
 

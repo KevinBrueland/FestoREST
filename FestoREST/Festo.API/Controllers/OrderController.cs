@@ -19,10 +19,10 @@ namespace Festo.API.Controllers
             _orderMapper = orderMapper;
         }
 
-        public OrderController()
-        {
+        //public OrderController()
+        //{
             
-        }
+        //}
 
         [HttpGet]
         public IHttpActionResult GetAllOrders(string fields = null)

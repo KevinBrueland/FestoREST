@@ -1,6 +1,6 @@
 ﻿using Owin;
 
-//[assembly: OwinStartup(typeof(Festo.API.Startup))]
+[assembly: Microsoft.Owin.OwinStartup(typeof(Festo.API.Startup))]
 
 namespace Festo.API
 {
