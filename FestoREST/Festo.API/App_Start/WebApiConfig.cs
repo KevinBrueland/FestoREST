@@ -8,7 +8,7 @@ using System.Web.Http;
 using Unity;
 using Unity.Lifetime;
 
-namespace Festo.API
+namespace Festo.API.App_Start
 {
     public static class WebApiConfig
     {
@@ -16,7 +16,7 @@ namespace Festo.API
         {
             var container = new UnityContainer();
             container.LoadRegistries();
-            
+
             var config = new HttpConfiguration();
             
             config.DependencyResolver = new UnityResolver(container);
@@ -36,9 +36,8 @@ namespace Festo.API
 
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
-            
-
             return config;
+
         }
     }
 }

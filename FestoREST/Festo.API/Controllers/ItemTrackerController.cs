@@ -104,8 +104,8 @@ namespace Festo.API.Controllers
         }
 
         [HttpGet]
-        [Route("api/itemtracker/{itemid}", Name = "ItemTrackers")]
-        public IHttpActionResult GetSingleItemTracker(int itemid, string fields = null)
+        //[Route("api/itemtracker/{itemid}", Name = "ItemTrackers")]
+        public IHttpActionResult GetSingleItemTracker(int id, string fields = null)
         {
             try
             {
@@ -116,7 +116,7 @@ namespace Festo.API.Controllers
                     listOfFields = fields.ToLower().Split(',').ToList();
                 }
 
-                var itemTracker = _uOW.ITEMTRACKERs.GetItemTrackerByItemId(itemid);
+                var itemTracker = _uOW.ITEMTRACKERs.GetItemTrackerByItemId(id);
 
                 if (itemTracker == null)
                 {

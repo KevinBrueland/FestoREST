@@ -41,6 +41,7 @@ namespace Festo.API.Controllers
 
                 return Ok(orders.ToList().Select(o => _orderMapper.CreateShapeDataObject(o, listOfFields)));
             }
+
             catch (Exception)
             {
 

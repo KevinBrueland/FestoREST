@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Festo.API.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,8 +12,7 @@ namespace Festo.API
     {
         protected void Application_Start()
         {
-            
-            
+
         }
     }
 }

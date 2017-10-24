@@ -34,8 +34,8 @@ namespace Festo.API.Controllers
         }
 
         [HttpGet]
-        [Route("api/ordertracker/{orderid}")]
-        public IHttpActionResult GetSingleOrderTracker(int orderid, string fields = null)
+        //[Route("api/ordertracker/{orderid}")]
+        public IHttpActionResult GetSingleOrderTracker(int id, string fields = null)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace Festo.API.Controllers
                     listOfFields = fields.ToLower().Split(',').ToList();
                 }
 
-                var orderTracker = _uOW.ORDERTRACKERs.GetSingleOrderTrackerByOrderId(orderid);
+                var orderTracker = _uOW.ORDERTRACKERs.GetSingleOrderTrackerByOrderId(id);
 
 
                 return Ok(_orderTrackerMapper.CreateOrderTrackerDTOFromOrderTracker(orderTracker));
