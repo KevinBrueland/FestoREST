@@ -27,7 +27,8 @@ namespace Festo.DataAccess.ConcreteRepositories
 
         public IEnumerable<ORDERS> GetAllOrders()
         {
-            return Context.Set<ORDERS>().ToList();
+            var stuff = Context.Set<ORDERS>().ToList();
+            return stuff;
         }
     }
 }
