@@ -14,8 +14,10 @@ namespace Festo.DataTables.Tables
             ALARMTRACKER = new HashSet<ALARMTRACKER>();
         }
 
+        [Key]
+        [Column("AlarmStatus")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int AlarmStatusID { get; set; }
+        public int AlarmStatus1 { get; set; }
 
         [Required]
         [StringLength(40)]

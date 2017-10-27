@@ -8,14 +8,9 @@ using System.Threading.Tasks;
 
 namespace Festo.Common.DataMapperInterfaces
 {
-    public interface IOrderMapper : IBaseMapper<ORDERS,OrderDTO>
+    public interface IItemMapper : IBaseMapper<ITEM, ItemDTO>
     {
-        OrderDTO CreateOrderDTOFromOrder(ORDERS order);
-        ORDERS CreateOrderFromOrderDTO(OrderDTO orderDTO);
-
-
-
-
-
+        ItemDTO CreateItemDTOFromItem(ITEM itemTracker);
+        ITEM CreateItemFromItemDTO(ItemDTO itemTrackerDTO);
     }
 }

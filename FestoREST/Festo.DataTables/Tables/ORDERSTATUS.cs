@@ -14,8 +14,10 @@ namespace Festo.DataTables.Tables
             ORDERTRACKER = new HashSet<ORDERTRACKER>();
         }
 
+        [Key]
+        [Column("OrderStatus")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int OrderStatusID { get; set; }
+        public int OrderStatus1 { get; set; }
 
         [StringLength(50)]
         public string Description { get; set; }

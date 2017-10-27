@@ -8,13 +8,10 @@ using System.Threading.Tasks;
 
 namespace Festo.Common.DataMapperInterfaces
 {
-    public interface IOrderTrackerMapper
+    public interface IOrderTrackerMapper : IBaseMapper<ORDERTRACKER, OrderTrackerDTO>
     {
         OrderTrackerDTO CreateOrderTrackerDTOFromOrderTracker(ORDERTRACKER orderTracker);
         ORDERTRACKER CreateOrderTrackerFromOrderTrackerDTO(OrderTrackerDTO orderTrackerDTO);
 
-        object CreateShapeDataObject(ORDERTRACKER orderTracker, List<string> listOfFields);
-
-        object CreateShapeDataObject(OrderTrackerDTO orderTrackerDTO, List<string> listOfFields);
     }
 }

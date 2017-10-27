@@ -9,25 +9,18 @@ namespace Festo.DataTables.Tables
     [Table("ITEMTRACKER")]
     public partial class ITEMTRACKER
     {
-        [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ItemStatusID { get; set; }
+        public int ItemStatus { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ItemID { get; set; }
 
-        [Key]
-        [Column(Order = 2)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int OrderID { get; set; }
 
-        public DateTime? TimeStamp { get; set; }
+        public DateTime TimeStamp { get; set; }
+
+        public int ItemTrackerID { get; set; }
 
         public virtual ITEM ITEM { get; set; }
 
-        public virtual ITEMSTATUS ITEMSTATUS { get; set; }
+        public virtual ITEMSTATUS ITEMSTATUS1 { get; set; }
     }
 }

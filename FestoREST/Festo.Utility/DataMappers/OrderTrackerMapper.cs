@@ -11,14 +11,15 @@ using System.Threading.Tasks;
 
 namespace Festo.Utility.DataMappers
 {
-    public class OrderTrackerMapper : IOrderTrackerMapper
+    public class OrderTrackerMapper : BaseMapper<ORDERTRACKER, OrderTrackerDTO>, IOrderTrackerMapper
     {
         public OrderTrackerDTO CreateOrderTrackerDTOFromOrderTracker(ORDERTRACKER orderTracker)
         {
             return new OrderTrackerDTO()
             {
+                OrderTrackerID = orderTracker.OrderTrackerID,
                 OrderID = orderTracker.OrderID,
-                OrderStatusID = orderTracker.OrderStatusID,
+                OrderStatus = orderTracker.OrderStatus,
                 TimeStamp = orderTracker.TimeStamp
             };
         }
@@ -27,39 +28,13 @@ namespace Festo.Utility.DataMappers
         {
             return new ORDERTRACKER()
             {
+                OrderTrackerID = orderTrackerDTO.OrderTrackerID,
                 OrderID = orderTrackerDTO.OrderID,
-                OrderStatusID = orderTrackerDTO.OrderStatusID,
+                OrderStatus = orderTrackerDTO.OrderStatus,
                 TimeStamp = orderTrackerDTO.TimeStamp
             };
         }
 
-        public object CreateShapeDataObject(ORDERTRACKER orderTracker, List<string> listOfFields)
-        {
-            //pass through from entity to DTO
-            return CreateShapeDataObject(orderTracker, listOfFields);
-        }
-
-        public object CreateShapeDataObject(OrderTrackerDTO orderTrackerDTO, List<string> listOfFields)
-        {
-            if (!listOfFields.Any())
-            {
-                return orderTrackerDTO;
-            }
-            else
-            {
-                ExpandoObject objectToReturn = new ExpandoObject();
-                foreach (var field in listOfFields)
-                {
-                    var fieldValue = orderTrackerDTO.GetType()
-                        .GetProperty(field, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance)
-                        .GetValue(orderTrackerDTO, null);
-
-                    ((IDictionary<string, object>)objectToReturn).Add(field, fieldValue);
-                }
-
-                return objectToReturn;
-            }
-
-        }
+       
     }
 }

@@ -42,7 +42,8 @@ namespace Festo.DataTables.Tables
 
             modelBuilder.Entity<ALARMSTATUS>()
                 .HasMany(e => e.ALARMTRACKER)
-                .WithRequired(e => e.ALARMSTATUS)
+                .WithRequired(e => e.ALARMSTATUS1)
+                .HasForeignKey(e => e.AlarmStatus)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CLIENT>()
@@ -113,7 +114,8 @@ namespace Festo.DataTables.Tables
 
             modelBuilder.Entity<ITEMSTATUS>()
                 .HasMany(e => e.ITEMTRACKER)
-                .WithRequired(e => e.ITEMSTATUS)
+                .WithRequired(e => e.ITEMSTATUS1)
+                .HasForeignKey(e => e.ItemStatus)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ORDERS>()
@@ -136,7 +138,8 @@ namespace Festo.DataTables.Tables
 
             modelBuilder.Entity<ORDERSTATUS>()
                 .HasMany(e => e.ORDERTRACKER)
-                .WithRequired(e => e.ORDERSTATUS)
+                .WithRequired(e => e.ORDERSTATUS1)
+                .HasForeignKey(e => e.OrderStatus)
                 .WillCascadeOnDelete(false);
         }
     }

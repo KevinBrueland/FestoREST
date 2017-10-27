@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataMappers\BaseMapper.cs" />
+    <Compile Include="DataMappers\ItemMapper.cs" />
     <Compile Include="DataMappers\ItemTrackerMapper.cs" />
     <Compile Include="DataMappers\OrderMapper.cs" />
     <Compile Include="DataMappers\OrderTrackerMapper.cs" />

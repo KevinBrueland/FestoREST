@@ -11,16 +11,18 @@ using System.Threading.Tasks;
 
 namespace Festo.Utility.DataMappers
 {
-    public class ItemTrackerMapper : IItemTrackerMapper
+    public class ItemTrackerMapper : BaseMapper<ITEMTRACKER,ItemTrackerDTO>, IItemTrackerMapper
     {
         public ItemTrackerDTO CreateItemTrackerDTOFromItemTracker(ITEMTRACKER itemTracker)
         {
             return new ItemTrackerDTO()
             {
-                OrderID = itemTracker.OrderID,
+                ItemTrackerID = itemTracker.ItemTrackerID,
                 ItemID = itemTracker.ItemID,
-                ItemStatusID = itemTracker.ItemStatusID,
+                OrderID = itemTracker.OrderID,
+                ItemStatus = itemTracker.ItemStatus,
                 TimeStamp = itemTracker.TimeStamp
+
 
             };
         }
@@ -29,39 +31,14 @@ namespace Festo.Utility.DataMappers
         {
             return new ITEMTRACKER()
             {
-                OrderID = itemTrackerDTO.OrderID,
+                ItemTrackerID = itemTrackerDTO.ItemTrackerID,
                 ItemID = itemTrackerDTO.ItemID,
-                ItemStatusID = itemTrackerDTO.ItemStatusID,
+                OrderID = itemTrackerDTO.OrderID,
+                ItemStatus = itemTrackerDTO.ItemStatus,
                 TimeStamp = itemTrackerDTO.TimeStamp
             };
         }
 
-        public object CreateShapeDataObject(ITEMTRACKER itemTracker, List<string> listOfFields)
-        {
-            //pass through from entity to DTO
-            return CreateShapeDataObject(CreateItemTrackerDTOFromItemTracker(itemTracker), listOfFields);
-        }
-
-        public object CreateShapeDataObject(ItemTrackerDTO itemTrackerDTO, List<string> listOfFields)
-        {
-            if (!listOfFields.Any())
-            {
-                return itemTrackerDTO;
-            }
-            else
-            {
-                ExpandoObject objectToReturn = new ExpandoObject();
-                foreach (var field in listOfFields)
-                {
-                    var fieldValue = itemTrackerDTO.GetType()
-                        .GetProperty(field, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance)
-                        .GetValue(itemTrackerDTO, null);
-
-                    ((IDictionary<string, object>)objectToReturn).Add(field, fieldValue);
-                }
-
-                return objectToReturn;
-            }
-        }
+       
     }
 }

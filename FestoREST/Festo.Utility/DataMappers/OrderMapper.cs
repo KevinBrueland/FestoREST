@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Festo.Utility.DataMappers
 {
-    public class OrderMapper : IOrderMapper
+    public class OrderMapper : BaseMapper<ORDERS,OrderDTO>, IOrderMapper
     {
         public OrderDTO CreateOrderDTOFromOrder(ORDERS order)
         {
@@ -33,33 +33,6 @@ namespace Festo.Utility.DataMappers
             };
         }
 
-        public object CreateShapeDataObject(ORDERS order, List<string> listOfFields)
-        {
-            //pass through from entity to DTO
-            return CreateShapeDataObject(CreateOrderDTOFromOrder(order), listOfFields);
-        }
-
-        public object CreateShapeDataObject(OrderDTO orderDTO, List<string> listOfFields)
-        {
-            if (!listOfFields.Any())
-            {
-                return orderDTO;
-            }
-            else
-            {
-                ExpandoObject objectToReturn = new ExpandoObject();
-                foreach (var field in listOfFields)
-                {
-                    var fieldValue = orderDTO.GetType()
-                        .GetProperty(field, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance)
-                        .GetValue(orderDTO, null);
-
-                    ((IDictionary<string, object>)objectToReturn).Add(field, fieldValue);
-                }
-
-                return objectToReturn;
-            }
-
-        }
+        
     }
 }

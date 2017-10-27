@@ -9,20 +9,16 @@ namespace Festo.DataTables.Tables
     [Table("ORDERTRACKER")]
     public partial class ORDERTRACKER
     {
-        [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int OrderID { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int OrderStatusID { get; set; }
+        public int OrderStatus { get; set; }
 
-        public DateTime? TimeStamp { get; set; }
+        public DateTime TimeStamp { get; set; }
+
+        public int OrderTrackerID { get; set; }
 
         public virtual ORDERS ORDERS { get; set; }
 
-        public virtual ORDERSTATUS ORDERSTATUS { get; set; }
+        public virtual ORDERSTATUS ORDERSTATUS1 { get; set; }
     }
 }

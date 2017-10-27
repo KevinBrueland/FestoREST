@@ -8,12 +8,14 @@ namespace Festo.DTOs
 {
     public class ItemTrackerDTO
     {
-        public int ItemStatusID { get; set; }
+        public int ItemTrackerID { get; set; }
+
+        public int ItemStatus { get; set; }
 
         public int ItemID { get; set; }
 
         public int OrderID { get; set; }
 
-        public DateTime? TimeStamp { get; set; }
+        public DateTime TimeStamp { get; set; }
     }
 }

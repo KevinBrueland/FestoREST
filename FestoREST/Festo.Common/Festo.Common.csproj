@@ -67,6 +67,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataMapperInterfaces\IBaseMapper.cs" />
+    <Compile Include="DataMapperInterfaces\IItemMapper.cs" />
     <Compile Include="DataMapperInterfaces\IItemTrackerMapper.cs" />
     <Compile Include="DataMapperInterfaces\IOrderMapper.cs" />
     <Compile Include="DataMapperInterfaces\IOrderTrackerMapper.cs" />

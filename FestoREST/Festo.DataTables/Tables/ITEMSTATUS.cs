@@ -14,8 +14,10 @@ namespace Festo.DataTables.Tables
             ITEMTRACKER = new HashSet<ITEMTRACKER>();
         }
 
+        [Key]
+        [Column("ItemStatus")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ItemStatusID { get; set; }
+        public int ItemStatus1 { get; set; }
 
         [StringLength(50)]
         public string Description { get; set; }
