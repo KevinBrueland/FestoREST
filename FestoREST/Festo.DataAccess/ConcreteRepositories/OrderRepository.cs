@@ -1,4 +1,5 @@
-﻿using Festo.Common.RepositoryInterfaces;
+﻿using Festo.Common.Enums;
+using Festo.Common.RepositoryInterfaces;
 using Festo.DataTables.Tables;
 using System;
 using System.Collections.Generic;
@@ -27,8 +28,25 @@ namespace Festo.DataAccess.ConcreteRepositories
 
         public IEnumerable<ORDERS> GetAllOrders()
         {
-            var stuff = Context.Set<ORDERS>().ToList();
-            return stuff;
+            return Context.Set<ORDERS>().ToList();
+        }
+
+        public IEnumerable<ORDERS> GetAllCompletedOrders()
+        {
+            var allOrders = Context.Set<ORDERS>().OrderBy(o => o.OrderID) as IQueryable<ORDERS>;
+
+            var completedOrders = allOrders.Where(o => o.ORDERTRACKER.All(ot => ot.OrderStatus == (int)OrderStatus.Complete));
+
+            return completedOrders;
+        }
+
+        public IEnumerable<ORDERS> GetAllOrdersInProduction()
+        {
+            var allOrders = Context.Set<ORDERS>().OrderBy(o => o.OrderID) as IQueryable<ORDERS>;
+
+            var completedOrders = allOrders.Where(o => o.ORDERTRACKER.All(ot => ot.OrderStatus == (int)OrderStatus.Complete));
+
+            return completedOrders;
         }
     }
 }

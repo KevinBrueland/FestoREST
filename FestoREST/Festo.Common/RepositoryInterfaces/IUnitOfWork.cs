@@ -10,9 +10,13 @@ namespace Festo.Common.RepositoryInterfaces
     {
         IOrderRepository ORDERs { get; }
 
+        IItemRepository ITEMs { get; }
+
         IOrderTrackerRepository ORDERTRACKERs { get; }
 
         IItemTrackerRepository ITEMTRACKERs { get; }
+
+        IProductionRepository PRODUCTION { get; }
 
 
         int Complete();

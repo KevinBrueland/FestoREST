@@ -14,17 +14,26 @@ namespace Festo.DataAccess.ConcreteRepositories
         private readonly FestoContext _context;
 
         public IOrderRepository ORDERs { get; private set; }
+        public IItemRepository ITEMs { get; private set; }
         public IItemTrackerRepository ITEMTRACKERs { get; private set; }
         public IOrderTrackerRepository ORDERTRACKERs { get; private set; }
+
+        public IProductionRepository PRODUCTION { get; private set; }
+        
+
         public UnitOfWork(FestoContext context)
         {
             _context = context;
 
             ORDERs = new OrderRepository(_context);
 
+            ITEMs = new ItemRepository(_context);
+
             ITEMTRACKERs = new ItemTrackerRepository(_context);
 
             ORDERTRACKERs = new OrderTrackerRepository(_context);
+
+            PRODUCTION = new ProductionRepository(_context);
 
         }
 

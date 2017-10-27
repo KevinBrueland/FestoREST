@@ -82,6 +82,7 @@
     <Compile Include="RepositoryInterfaces\IOrderTrackerRepository.cs" />
     <Compile Include="RepositoryInterfaces\IRepository.cs" />
     <Compile Include="RepositoryInterfaces\IUnitOfWork.cs" />
+    <Compile Include="RepositoryInterfaces\IProductionRepository.cs" />
     <Compile Include="UtilityInterfaces\IRepositoryActionResult.cs" />
   </ItemGroup>
   <ItemGroup>

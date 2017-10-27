@@ -47,9 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConcreteRepositories\ItemRepository.cs" />
     <Compile Include="ConcreteRepositories\ItemTrackerRepository.cs" />
     <Compile Include="ConcreteRepositories\OrderRepository.cs" />
     <Compile Include="ConcreteRepositories\OrderTrackerRepository.cs" />
+    <Compile Include="ConcreteRepositories\ProductionRepository.cs" />
     <Compile Include="ConcreteRepositories\Repository.cs" />
     <Compile Include="ConcreteRepositories\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
