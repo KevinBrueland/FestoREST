@@ -23,6 +23,38 @@ namespace Festo.API.Controllers
             _uOW = uOW;
             _itemMapper = itemMapper;
         }
+
+        public ItemsController()
+        {
+
+        }
+
+        [HttpGet]
+        [Route("api/items")]
+        public IHttpActionResult GetAllItems(string fields = null)
+        {
+            try
+            {
+                List<string> listOfFields = new List<string>();
+
+                if (fields != null)
+                {
+                    listOfFields = fields.ToLower().Split(',').ToList();
+                }
+
+                var items = _uOW.ITEMs.GetAllItems();
+
+
+                return Ok(items.ToList().Select(i => _itemMapper.CreateItemDTOFromItem(i)));
+            }
+
+            catch (Exception)
+            {
+
+                return InternalServerError();
+            }
+        }
+
         [HttpPost]
         public IHttpActionResult AddSingleItem([FromBody] ItemDTO itemDTO)
         {

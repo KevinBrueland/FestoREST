@@ -34,8 +34,8 @@ namespace Festo.API.Controllers
         }
 
         [HttpGet]
-        //[Route("api/ordertracker/{orderid}")]
-        public IHttpActionResult GetSingleOrderTracker(int id, string fields = null)
+        [Route("api/ordertrackers/{orderId}")]
+        public IHttpActionResult GetSingleOrderTracker(int orderId, string fields = null)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace Festo.API.Controllers
                     listOfFields = fields.ToLower().Split(',').ToList();
                 }
 
-                var orderTracker = _uOW.ORDERTRACKERs.GetSingleOrderTrackerByOrderId(id);
+                var orderTracker = _uOW.ORDERTRACKERs.GetSingleOrderTrackerByOrderId(orderId);
 
 
                 return Ok(_orderTrackerMapper.CreateOrderTrackerDTOFromOrderTracker(orderTracker));
@@ -124,7 +124,7 @@ namespace Festo.API.Controllers
                 {
                     var newOrderTracker = _orderTrackerMapper.CreateOrderTrackerDTOFromOrderTracker(result.Entity);
 
-                    return Created(Request.RequestUri + "/" + newOrderTracker.OrderID.ToString(), newOrderTracker);
+                    return Created(Request.RequestUri + "/" + newOrderTracker.OrderTrackerID.ToString(), newOrderTracker);
                 }
 
                 return BadRequest();

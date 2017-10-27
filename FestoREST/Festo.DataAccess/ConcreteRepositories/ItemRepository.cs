@@ -24,5 +24,10 @@ namespace Festo.DataAccess.ConcreteRepositories
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<ITEM> GetAllItems()
+        {
+            return Context.Set<ITEM>().ToList();
+        }
     }
 }

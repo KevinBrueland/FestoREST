@@ -20,6 +20,7 @@ namespace Festo.API.Resolver
             //map dependencies here
             container.RegisterType<IUnitOfWork, UnitOfWork>(new HierarchicalLifetimeManager());
             container.RegisterType<IOrderMapper, OrderMapper>(new HierarchicalLifetimeManager());
+            container.RegisterType<IItemMapper, ItemMapper>(new HierarchicalLifetimeManager());
             container.RegisterType<IOrderTrackerMapper, OrderTrackerMapper>(new HierarchicalLifetimeManager());
             container.RegisterType<IItemTrackerMapper, ItemTrackerMapper>(new HierarchicalLifetimeManager());
             container.RegisterType(typeof(IRepositoryActionResult<>), typeof(RepositoryActionResult<>));

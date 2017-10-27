@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Festo.Utility.DataMappers
 {
-    class ItemMapper : BaseMapper<ITEM, ItemDTO>, IItemMapper
+    public class ItemMapper : BaseMapper<ITEM, ItemDTO>, IItemMapper
     {
         public ItemDTO CreateItemDTOFromItem(ITEM item)
         {

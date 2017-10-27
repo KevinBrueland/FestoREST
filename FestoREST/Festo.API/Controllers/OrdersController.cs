@@ -19,7 +19,13 @@ namespace Festo.API.Controllers
             _orderMapper = orderMapper;
         }
 
+        public OrdersController()
+        {
+
+        }
+
         [HttpGet]
+        [Route("api/orders")]
         public IHttpActionResult GetAllOrders(string fields = null)
         {
             try
@@ -34,7 +40,7 @@ namespace Festo.API.Controllers
                 var orders = _uOW.ORDERs.GetAllOrders();
 
 
-                return Ok(orders.ToList().Select(o => _orderMapper.CreateShapeDataObject(o, listOfFields)));
+                return Ok(orders.ToList().Select(o => _orderMapper.CreateOrderDTOFromOrder(o)));
             }
 
             catch (Exception)

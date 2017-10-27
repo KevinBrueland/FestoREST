@@ -9,6 +9,16 @@ namespace Festo.Common.RepositoryInterfaces
 {
     public interface IProductionRepository : IRepository<ORDERS>
     {
-        //wank.
+        ORDERS GetCurrentOrderInProduction();
+
+
+        ITEM GetNextItemToProduce();
+        
+
+        ORDERS GetNextOrderToProduce();
+
+
+        bool CheckIsOrderComplete(int orderId);
+       
     }
 }

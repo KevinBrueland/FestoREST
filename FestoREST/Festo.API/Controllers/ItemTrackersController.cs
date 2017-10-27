@@ -24,6 +24,10 @@ namespace Festo.API.Controllers
             _uOW = uOW;
             _itemTrackerMapper = itemTrackerMapper;
         }
+        public ItemTrackersController()
+        {
+
+        }
 
         [HttpPost]
         public IHttpActionResult AddSingleItemTracker([FromBody] ItemTrackerDTO itemTrackerDTO)
@@ -41,9 +45,9 @@ namespace Festo.API.Controllers
 
                 if (result.Status == RepositoryActionStatus.Created)
                 {
-                    var newOrderTracker = _itemTrackerMapper.CreateItemTrackerDTOFromItemTracker(result.Entity);
+                    var newItemTracker = _itemTrackerMapper.CreateItemTrackerDTOFromItemTracker(result.Entity);
 
-                    return Created(Request.RequestUri + "/" + newOrderTracker.OrderID.ToString(), newOrderTracker);
+                    return Created(Request.RequestUri + "/" + newItemTracker.ItemTrackerID.ToString(), newItemTracker);
                 }
 
                 return BadRequest();
@@ -104,8 +108,8 @@ namespace Festo.API.Controllers
         }
 
         [HttpGet]
-        //[Route("api/itemtracker/{itemid}", Name = "ItemTrackers")]
-        public IHttpActionResult GetSingleItemTracker(int id, string fields = null)
+        [Route("api/itemtrackers/{itemId}", Name = "ItemTrackers")]
+        public IHttpActionResult GetSingleItemTracker(int itemId, string fields = null)
         {
             try
             {
@@ -116,7 +120,7 @@ namespace Festo.API.Controllers
                     listOfFields = fields.ToLower().Split(',').ToList();
                 }
 
-                var itemTracker = _uOW.ITEMTRACKERs.GetItemTrackerByItemId(id);
+                var itemTracker = _uOW.ITEMTRACKERs.GetItemTrackerByItemId(itemId);
 
                 if (itemTracker == null)
                 {
@@ -124,7 +128,7 @@ namespace Festo.API.Controllers
                 }
                 else
                 {
-                    return Ok(_itemTrackerMapper.CreateShapeDataObject(itemTracker, listOfFields));
+                    return Ok(_itemTrackerMapper.CreateItemTrackerDTOFromItemTracker(itemTracker));
                 }
             }
             catch (Exception)

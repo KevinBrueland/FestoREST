@@ -10,5 +10,7 @@ namespace Festo.Common.RepositoryInterfaces
     public interface IItemRepository : IRepository<ITEM>
     {
         IEnumerable<ITEM> GetAllItemsByOrderId(int orderId);
+
+        IEnumerable<ITEM> GetAllItems();
     }
 }

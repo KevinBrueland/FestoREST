@@ -32,7 +32,7 @@ namespace Festo.DataAccess.ConcreteRepositories
             return firstOrder;
         }
 
-        public ITEM NextItemToProduce()
+        public ITEM GetNextItemToProduce()
         {
             var firstOrder = GetCurrentOrderInProduction();
 
@@ -45,7 +45,7 @@ namespace Festo.DataAccess.ConcreteRepositories
             return nextItemToProduce;
         }
 
-        public ORDERS NextOrderToProduce()
+        public ORDERS GetNextOrderToProduce()
         {
             var orders = Context.Set<ORDERS>().OrderBy(o => o.OrderID) as IQueryable<ORDERS>;
 

@@ -23,7 +23,7 @@ namespace Festo.DataAccess.ConcreteRepositories
 
         public ORDERS GetOrderByOrderId(int orderId)
         {
-            return FestoContext.ORDERS.FirstOrDefault(o => o.OrderID == orderId);
+            return Context.Set<ORDERS>().FirstOrDefault(o => o.OrderID == orderId);
         }
 
         public IEnumerable<ORDERS> GetAllOrders()
