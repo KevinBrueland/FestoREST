@@ -31,7 +31,7 @@ namespace Festo.Utility.DataMappers
                 OrderTrackerID = orderTrackerDTO.OrderTrackerID,
                 OrderID = orderTrackerDTO.OrderID,
                 OrderStatus = orderTrackerDTO.OrderStatus,
-                TimeStamp = orderTrackerDTO.TimeStamp
+                TimeStamp = DateTime.Now.AddHours(1)
             };
         }
 

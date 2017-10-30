@@ -30,6 +30,7 @@ namespace Festo.API.Controllers
         }
 
         [HttpPost]
+        [Route("api/itemtrackers")]
         public IHttpActionResult AddSingleItemTracker([FromBody] ItemTrackerDTO itemTrackerDTO)
         {
             try
@@ -47,7 +48,7 @@ namespace Festo.API.Controllers
                 {
                     var newItemTracker = _itemTrackerMapper.CreateItemTrackerDTOFromItemTracker(result.Entity);
 
-                    return Created(Request.RequestUri + "/" + newItemTracker.ItemTrackerID.ToString(), newItemTracker);
+                    return Created(Request.RequestUri, newItemTracker);
                 }
 
                 return BadRequest();

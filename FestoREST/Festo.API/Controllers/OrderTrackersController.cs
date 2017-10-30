@@ -60,6 +60,7 @@ namespace Festo.API.Controllers
 
         [HttpPut]
         [HttpPatch]
+
         public IHttpActionResult PatchUpdateOrderTracker(int orderid, int itemid, [FromBody]JsonPatchDocument<OrderTrackerDTO> OrderTrackerPatchDocument)
         {
             try
@@ -107,6 +108,7 @@ namespace Festo.API.Controllers
         }
 
         [HttpPost]
+        [Route("api/ordertrackers")]
         public IHttpActionResult AddSingleOrderTracker([FromBody] OrderTrackerDTO orderTrackerDTO)
         {
             try
@@ -124,7 +126,7 @@ namespace Festo.API.Controllers
                 {
                     var newOrderTracker = _orderTrackerMapper.CreateOrderTrackerDTOFromOrderTracker(result.Entity);
 
-                    return Created(Request.RequestUri + "/" + newOrderTracker.OrderTrackerID.ToString(), newOrderTracker);
+                    return Created(Request.RequestUri, newOrderTracker);
                 }
 
                 return BadRequest();

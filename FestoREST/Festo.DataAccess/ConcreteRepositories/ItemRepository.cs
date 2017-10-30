@@ -29,5 +29,10 @@ namespace Festo.DataAccess.ConcreteRepositories
         {
             return Context.Set<ITEM>().ToList();
         }
+
+        public ITEM GetSingleItemById(int itemId)
+        {
+            return Context.Set<ITEM>().FirstOrDefault(i => i.ItemID == itemId);
+        }
     }
 }

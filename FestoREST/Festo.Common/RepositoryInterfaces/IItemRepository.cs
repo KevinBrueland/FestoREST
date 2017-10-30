@@ -12,5 +12,7 @@ namespace Festo.Common.RepositoryInterfaces
         IEnumerable<ITEM> GetAllItemsByOrderId(int orderId);
 
         IEnumerable<ITEM> GetAllItems();
+
+        ITEM GetSingleItemById(int itemId);
     }
 }

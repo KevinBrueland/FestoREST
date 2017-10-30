@@ -50,5 +50,30 @@ namespace Festo.API.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("api/orders/{orderId}")]
+        public IHttpActionResult GetSingleOrderById(int orderId, string fields = null)
+        {
+            try
+            {
+                List<string> listOfFields = new List<string>();
+
+                if (fields != null)
+                {
+                    listOfFields = fields.ToLower().Split(',').ToList();
+                }
+
+                var order = _uOW.ORDERs.GetOrderByOrderId(orderId);
+
+
+                return Ok(_orderMapper.CreateOrderDTOFromOrder(order));
+            }
+            catch (Exception)
+            {
+
+                return InternalServerError();
+            }
+        }
+
     }
 }
