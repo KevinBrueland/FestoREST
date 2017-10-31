@@ -19,6 +19,9 @@ namespace Festo.Common.RepositoryInterfaces
 
 
         bool CheckIsOrderComplete(int orderId);
-       
+
+        bool CheckIsAllItemsInOrderComplete(int orderId);
+
+
     }
 }

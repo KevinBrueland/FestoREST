@@ -63,5 +63,24 @@ namespace Festo.DataAccess.ConcreteRepositories
 
             return isComplete;
         }
+
+        public bool CheckIsAllItemsInOrderComplete(int orderId)
+        {
+
+            var items = Context.Set<ITEM>().Where(i => i.OrderID == orderId) as IQueryable<ITEM>;
+
+            var itemTrackers = Context.Set<ITEMTRACKER>().Where(i => i.OrderID == orderId && i.ItemStatus == (int)ItemStatus.Complete) as IQueryable<ITEMTRACKER>;
+
+            if(items.Count() == itemTrackers.Count())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+            
+
     }
 }

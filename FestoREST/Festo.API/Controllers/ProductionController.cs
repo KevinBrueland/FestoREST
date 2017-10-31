@@ -126,5 +126,30 @@ namespace Festo.API.Controllers
                 return InternalServerError();
             }
         }
+
+        [HttpGet]
+        [Route("api/production/orderitemscompletionstatus/{orderId}")]
+        public IHttpActionResult AreAllItemsInOrderComplete(int orderId, string fields = null)
+        {
+            try
+            {
+                List<string> listOfFields = new List<string>();
+
+                if (fields != null)
+                {
+                    listOfFields = fields.ToLower().Split(',').ToList();
+                }
+
+                var areAllItemsInOrderComplete = _uOW.PRODUCTION.CheckIsAllItemsInOrderComplete(orderId);
+
+
+                return Ok(areAllItemsInOrderComplete);
+            }
+            catch (Exception)
+            {
+
+                return InternalServerError();
+            }
+        }
     }
 }

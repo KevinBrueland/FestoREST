@@ -14,5 +14,7 @@ namespace Festo.Common.RepositoryInterfaces
         IEnumerable<ITEM> GetAllItems();
 
         ITEM GetSingleItemById(int itemId);
+
+        object UpdateItem(ITEM item);
     }
 }
