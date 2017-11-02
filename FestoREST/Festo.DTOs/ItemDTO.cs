@@ -16,10 +16,6 @@ namespace Festo.DTOs
 
         public double? ItemWeight { get; set; }
 
-        public double? MeasuredWeight { get; set; }
-
-        public double? MeasuredDeviation { get; set; }
-
         public int OrderID { get; set; }
 
         public string Size { get; set; }
