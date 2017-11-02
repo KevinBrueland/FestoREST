@@ -13,7 +13,7 @@ namespace Festo.DataTables.Tables
 
         public int AlarmStatus { get; set; }
 
-        public DateTime? TimeStamp { get; /*set;*/ }
+        public DateTime TimeStamp { get; set; }
 
         public int AlarmTrackerID { get; set; }
 

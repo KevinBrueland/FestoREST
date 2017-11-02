@@ -19,6 +19,8 @@ namespace Festo.DataTables.Tables
 
         public int ItemTrackerID { get; set; }
 
+        public double? MeasuredWeight { get; set; }
+
         public virtual ITEM ITEM { get; set; }
 
         public virtual ITEMSTATUS ITEMSTATUS1 { get; set; }

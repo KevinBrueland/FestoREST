@@ -21,8 +21,7 @@ namespace Festo.Utility.DataMappers
                 ItemColour = item.ItemColour,
                 Size = item.Size,
                 ItemWeight = item.ItemWeight,
-                MeasuredWeight = item.MeasuredWeight,
-                MeasuredDeviation = item.MeasuredDeviation
+                
 
 
             };
@@ -38,8 +37,6 @@ namespace Festo.Utility.DataMappers
                 ItemColour = itemDTO.ItemColour,
                 Size = itemDTO.Size,
                 ItemWeight = itemDTO.ItemWeight,
-                MeasuredWeight = itemDTO.MeasuredWeight,
-                MeasuredDeviation = itemDTO.MeasuredDeviation
             };
         }
     }

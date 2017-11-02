@@ -21,7 +21,8 @@ namespace Festo.Utility.DataMappers
                 ItemID = itemTracker.ItemID,
                 OrderID = itemTracker.OrderID,
                 ItemStatus = itemTracker.ItemStatus,
-                TimeStamp = itemTracker.TimeStamp
+                TimeStamp = itemTracker.TimeStamp,
+                MeasuredWeight = itemTracker.MeasuredWeight
 
 
             };
@@ -35,7 +36,9 @@ namespace Festo.Utility.DataMappers
                 ItemID = itemTrackerDTO.ItemID,
                 OrderID = itemTrackerDTO.OrderID,
                 ItemStatus = itemTrackerDTO.ItemStatus,
-                TimeStamp = DateTime.Now.AddHours(1)
+                TimeStamp = DateTime.Now.AddHours(1),
+                MeasuredWeight = itemTrackerDTO.MeasuredWeight
+               
             };
         }
 

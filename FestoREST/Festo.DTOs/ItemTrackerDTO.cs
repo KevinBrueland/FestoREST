@@ -17,5 +17,7 @@ namespace Festo.DTOs
         public int OrderID { get; set; }
 
         public DateTime TimeStamp { get; set; }
+
+        public double? MeasuredWeight { get; set; }
     }
 }
