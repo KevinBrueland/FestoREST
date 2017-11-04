@@ -41,7 +41,10 @@ namespace Festo.API.Controllers
                 }
 
                 var currentProductionOrder = _uOW.PRODUCTION.GetCurrentOrderInProduction();
-
+                if (currentProductionOrder == null)
+                {
+                    return NotFound();
+                }
 
                 return Ok(_orderMapper.CreateOrderDTOFromOrder(currentProductionOrder));
             }
@@ -67,12 +70,15 @@ namespace Festo.API.Controllers
 
                 var nextItemToProduce = _uOW.PRODUCTION.GetNextItemToProduce();
 
+                if (nextItemToProduce == null)
+                {
+                    return NotFound();
+                }
 
                 return Ok(_itemMapper.CreateItemDTOFromItem(nextItemToProduce));
             }
             catch (Exception)
             {
-
                 return InternalServerError();
             }
         }
@@ -91,7 +97,10 @@ namespace Festo.API.Controllers
                 }
 
                 var nextOrderToProduce = _uOW.PRODUCTION.GetNextOrderToProduce();
-
+                if (nextOrderToProduce == null)
+                {
+                    return NotFound();
+                }
 
                 return Ok(_orderMapper.CreateOrderDTOFromOrder(nextOrderToProduce));
             }
@@ -141,6 +150,10 @@ namespace Festo.API.Controllers
                 }
 
                 var areAllItemsInOrderComplete = _uOW.PRODUCTION.CheckIsAllItemsInOrderComplete(orderId);
+                if(areAllItemsInOrderComplete == null)
+                {
+                    return NotFound();
+                }
 
 
                 return Ok(areAllItemsInOrderComplete);
