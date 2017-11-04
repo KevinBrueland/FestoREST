@@ -39,12 +39,24 @@ namespace Festo.DataAccess.ConcreteRepositories
 
             var items = Context.Set<ITEM>().Where(i => i.OrderID == firstOrder.OrderID) as IQueryable<ITEM>;
 
-            var firstItem = items.Where(i => i.ITEMTRACKER.Any(it => it.ItemStatus == (int)ItemStatus.Failed)
-                                                       || i.ITEMTRACKER.All(it2 => it2.ItemStatus != (int)ItemStatus.InProduction)
-                                                       && i.ITEMTRACKER.Any(it3 => it3.ItemStatus != (int)ItemStatus.Complete))
-                                                       .FirstOrDefault();
+            var nextItem = CheckStatusOfItems(items);
 
-            return firstItem;
+            return nextItem;
+        }
+
+        private ITEM CheckStatusOfItems(IQueryable<ITEM> items)
+        {
+            var ItemsToProduce =
+                                 from item in items
+                                 from lastStatusOfItem in Context.Set<ITEMTRACKER>()
+                                .Where(it => it.ItemID == item.ItemID)
+                                .OrderByDescending(it => it.ItemTrackerID)
+                                .Take(1)
+                                 where (lastStatusOfItem.ItemStatus == (int)ItemStatus.Failed || lastStatusOfItem.ItemStatus == (int)ItemStatus.Confirmed)
+                                 select item;
+
+            return ItemsToProduce.FirstOrDefault();
+
         }
 
         public ORDERS GetFirstOrderInProductionAndNotCompleted()
