@@ -32,18 +32,48 @@ namespace Festo.DataAccess.ConcreteRepositories
             return firstOrder;
         }
 
+        //public ITEM GetNextItemToProduce()
+        //{
+        //    var firstOrder = GetCurrentOrderInProduction();
+
+        //    var items = Context.Set<ITEM>().Where(i => i.OrderID == firstOrder.OrderID) as IQueryable<ITEM>;
+
+        //    var nextItemToProduce = items.Where(i => i.ITEMTRACKER.All(it => it.ItemStatus == (int)ItemStatus.Failed)
+        //                                          || i.ITEMTRACKER.All(it2 => it2.ItemStatus != (int)ItemStatus.InProduction)
+        //                                          && i.ITEMTRACKER.Any(it3 => it3.ItemStatus != (int)ItemStatus.Complete)).FirstOrDefault();
+
+        //    return nextItemToProduce;
+        //}
+
         public ITEM GetNextItemToProduce()
         {
-            var firstOrder = GetCurrentOrderInProduction();
+            var firstOrder = GetFirstOrderInProductionAndNotCompleted();
 
             var items = Context.Set<ITEM>().Where(i => i.OrderID == firstOrder.OrderID) as IQueryable<ITEM>;
 
-            var nextItemToProduce = items.Where(i => i.ITEMTRACKER.All(it => it.ItemStatus == (int)ItemStatus.Failed)
-                                                  || i.ITEMTRACKER.All(it2 => it2.ItemStatus != (int)ItemStatus.InProduction)
-                                                  && i.ITEMTRACKER.Any(it3 => it3.ItemStatus != (int)ItemStatus.Complete)).FirstOrDefault();
+            var firstItem = items.Where(i => i.ITEMTRACKER.Any(it => it.ItemStatus == (int)ItemStatus.Failed)
+                                                       || i.ITEMTRACKER.All(it2 => it2.ItemStatus != (int)ItemStatus.InProduction)
+                                                       && i.ITEMTRACKER.Any(it3 => it3.ItemStatus != (int)ItemStatus.Complete))
+                                                       .FirstOrDefault();
 
-            return nextItemToProduce;
+            return firstItem;
         }
+
+        public ORDERS GetFirstOrderInProductionAndNotCompleted()
+        {
+
+            var orders = Context.Set<ORDERS>().OrderBy(o => o.OrderID) as IQueryable<ORDERS>;
+
+            var firstOrder = orders.Where(o => o.ORDERTRACKER.All(ot => ot.OrderStatus != (int)OrderStatus.Complete
+                                            && o.ORDERTRACKER.Any(ot2 => ot2.OrderStatus == (int)OrderStatus.InProduction))).FirstOrDefault();
+
+            return firstOrder;
+
+        }
+
+
+
+
 
         public ORDERS GetNextOrderToProduce()
         {
